@@ -1,0 +1,36 @@
+<mat-accordion>
+  <mat-expansion-panel
+    #matExpansionPanel
+    [ngClass]="[disabled ? 'disabled' : '']"
+    [disabled]="disabled"
+    [expanded]="renderedIsExpanded"
+    [tabindex]="disabled ? -1 : tabIndexValue"
+  >
+    <mat-expansion-panel-header
+      (click)="onClickHandler($event)"
+      [expandedHeight]="'48px'"
+    >
+      <mat-panel-title [ngClass]="'before'">
+        <span *ngIf="label">{{ label }}</span>
+      </mat-panel-title>
+      <mat-panel-description>
+        <span *ngIf="assistiveText">{{ assistiveText }}</span>
+      </mat-panel-description>
+      <span class="caret-indicator">
+        <svg
+          class="up"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+          <path d="M0 0h24v24H0z" fill="none" />
+        </svg>
+      </span>
+    </mat-expansion-panel-header>
+    <bg-provider color="{{currentBackgroundColor}}">
+      <ng-content></ng-content>
+    </bg-provider>
+  </mat-expansion-panel>
+</mat-accordion>
